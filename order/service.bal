@@ -34,10 +34,20 @@ service / on new http:Listener(9091) {
     resource function post placeOrder(string userId, string itemId, int quantity) returns json|error {
         log:printInfo(string `placeOrder invoked with : ${userId}, ${itemId}, ${quantity}`);
         http:Response _ = check self.userClient->/getUser(userId = userId);
-        http:Response _ = check self.productClient->/getProducts();
+        http:Response _ = check self.productClient->/getProduct(id = itemId);
         http:Response _ = check self.notificationClient->/notify.post(message = "Order placed");
         return {
             "orderId": "101"
+        };
+    }
+
+    resource function get getOrder(string orderId) returns json|error {
+        log:printInfo(string `getOrder invoked with : ${orderId}`);
+        return {
+            "orderId": "101",
+            "userId": "u1",
+            "itemId": "i1",
+            "quantity": 1
         };
     }
 }

@@ -25,8 +25,8 @@ service / on new http:Listener(9094) {
         self.orderClient = check new ("http://order-1063079912:9091");
     }
     resource function post notify(string message) returns string|error {
-        log:printInfo(string `getCartItems invoked`);
-        http:Response _ = check self.orderClient->/placeOrder.post(userId = "1", itemId = "1", quantity = 1, message = "");
+        log:printInfo(string `notify invoked`);
+        http:Response _ = check self.orderClient->/getOrder(itemId = "1");
         http:Response _ = check self.userClient->/getUser(userId = "1");
         return "success";
     }

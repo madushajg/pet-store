@@ -4,8 +4,8 @@ import ballerina/http;
 # A service representing a network-accessible API
 # bound to port `9090`.
 @display {
-	label: "product",
-	id: "product-f3b70fe8-8a95-4664-b908-416ee136cd20"
+    label: "product",
+    id: "product-f3b70fe8-8a95-4664-b908-416ee136cd20"
 }
 service / on new http:Listener(9090) {
 
@@ -23,5 +23,10 @@ service / on new http:Listener(9090) {
         log:printInfo("getProducts");
         string[] items = check self.inventoryClient->/allItems;
         return items;
+    }
+
+    resource function get getProduct(string id) returns string|error {
+        log:printInfo(string `invoked getProduct with id: ${id}`);
+        return "product 1";
     }
 }
