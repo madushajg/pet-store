@@ -21,8 +21,8 @@ service / on new http:Listener(9093) {
     http:Client orderClient = check new ("");
 
     function init() returns error? {
-        self.userClient = check new ("");
-        self.orderClient = check new ("");
+        self.userClient = check new ("http://order-management-2330531075:9093");
+        self.orderClient = check new ("http://order-management-2330531075:9093");
     }
 
     resource function get getCartItems() returns string[]|error {
