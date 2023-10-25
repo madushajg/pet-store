@@ -8,7 +8,7 @@ metadata:
 spec:
   inbound:
   - name: inventory
-    port: 9097
+    port: 9095
     type: REST
     visibility: Organization
     context: /

@@ -1,0 +1,8 @@
+version: 0.1
+
+endpoints:
+- name: inventory
+  port: 9095
+  type: REST
+  networkVisibility: Organization
+  context: /
