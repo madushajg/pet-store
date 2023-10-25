@@ -14,6 +14,9 @@ spec:
     context: /
   outbound:
     serviceReferences:
+    - name: choreo://pet-store/Inventory/v1.0/inventory/public
+      dependentConfig: config-1
+      connectionType: service
     - name: product-db
       dependentConfig: config-1
       connectionType: datastore

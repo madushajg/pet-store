@@ -20,9 +20,9 @@ spec:
     - name: choreo://pet-store/user/v1.0/user/project
       dependentConfig: config-1
       connectionType: service
-    - name: choreo://pet-store/payment/v1.0/payment/project
+    - name: choreo://pet-store/notification/v1.0/notification/project
       dependentConfig: config-1
       connectionType: service
-    - name: choreo://pet-store/notification/v1.0/notification/project
+    - name: choreo://sales/payment/v1.0/petStore/Organization
       dependentConfig: config-1
       connectionType: service

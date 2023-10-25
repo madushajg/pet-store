@@ -12,8 +12,3 @@ spec:
     type: REST
     visibility: Organization
     context: /
-  outbound:
-    serviceReferences:
-    - name: choreo://pet-store/checkout/v1.0/checkout/public
-      dependentConfig: config-1
-      connectionType: service
