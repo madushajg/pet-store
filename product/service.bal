@@ -16,7 +16,7 @@ service / on new http:Listener(9090) {
     http:Client inventoryClient;
 
     function init() returns error? {
-        self.inventoryClient = check new ("http://order-management-2330531075:9093");
+        self.inventoryClient = check new ("http://inventory-3512217301:9095");
     }
 
     resource function get getProducts() returns string[]|error {

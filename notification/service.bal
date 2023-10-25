@@ -21,8 +21,8 @@ service / on new http:Listener(9094) {
     http:Client orderClient;
 
     function init() returns error? {
-        self.userClient = check new ("http://order-management-2330531075:9093");
-        self.orderClient = check new ("http://order-management-2330531075:9093");
+        self.userClient = check new ("http://user-1692604229:9092");
+        self.orderClient = check new ("http://order-1063079912:9091");
     }
     resource function post notify(string message) returns string|error {
         log:printInfo(string `getCartItems invoked`);
