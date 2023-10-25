@@ -1,14 +1,14 @@
 apiVersion: core.choreo.dev/v1alpha1
 kind: ComponentConfig
 metadata:
-  name: cart-service
+  name: inventory
   projectName: pet-store
   annotations:
     componentType: service
 spec:
   inbound:
-  - name: cart
-    port: 9090
+  - name: inventory
+    port: 9097
     type: REST
     visibility: Organization
     context: /

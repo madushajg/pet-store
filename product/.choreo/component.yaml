@@ -1,19 +1,19 @@
 apiVersion: core.choreo.dev/v1alpha1
 kind: ComponentConfig
 metadata:
-  name: cart-service
+  name: product
   projectName: pet-store
   annotations:
     componentType: service
 spec:
   inbound:
-  - name: cart
+  - name: product
     port: 9090
     type: REST
-    visibility: Organization
+    visibility: Public
     context: /
   outbound:
     serviceReferences:
-    - name: choreo://pet-store/checkout/v1.0/checkout/public
+    - name: product-db
       dependentConfig: config-1
-      connectionType: service
+      connectionType: datastore
