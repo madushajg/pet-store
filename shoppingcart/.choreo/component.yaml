@@ -14,7 +14,7 @@ spec:
     context: /
   outbound:
     serviceReferences:
-    - name: choreo://pet-store/product/v1.0/product/public
+    - name: choreo://pet-store/order/v1.0/order/public
       dependentConfig: config-1
       connectionType: service
     - name: choreo://pet-store/user/v1.0/user/project

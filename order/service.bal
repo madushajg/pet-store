@@ -1,23 +1,18 @@
+import ballerina/log;
 import ballerina/http;
 
 # A service representing a network-accessible API
-# bound to port `9090`.
+# bound to port `9091`.
 @display {
     label: "order",
     id: "order-282b69f9-dc32-4a77-9175-8ee4b0ec11c8"
 }
-service / on new http:Listener(9090) {
+service / on new http:Listener(9091) {
     @display {
         label: "notification",
         id: "notification-d90d2fa6-66f6-4ce1-93fb-c7ae106da21b"
     }
     http:Client notificationClient = check new ("");
-
-    @display {
-        label: "payment",
-        id: "payment-d0fe24f8-acf3-4024-a192-e100478d13ae"
-    }
-    http:Client paymentClient = check new ("");
 
     @display {
         label: "user",
@@ -33,19 +28,16 @@ service / on new http:Listener(9090) {
 
     function init() returns error? {
         self.notificationClient = check new ("");
-        self.paymentClient = check new ("");
         self.userClient = check new ("");
         self.productClient = check new ("");
     }
-
-    # A resource for generating greetings
-    # + name - the input string name
-    # + return - string name with hello message or error
-    resource function get greeting(string name) returns string|error {
-        // Send a response back to the caller.
-        if name is "" {
-            return error("name should not be empty!");
-        }
-        return "Hello, " + name;
+    resource function post placeOrder(string userId, string itemId, int quantity) returns json|error {
+        log:printInfo(string `placeOrder invoked with : ${userId}, ${itemId}, ${quantity}`);
+        http:Response _ = check self.userClient->/getUser(userId = userId);
+        http:Response _ = check self.productClient->/getProducts();
+        http:Response _ = check self.notificationClient->/notify.post(message = "Order placed");
+        return {
+            "orderId": "101"
+        };
     }
 }

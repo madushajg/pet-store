@@ -8,7 +8,7 @@ metadata:
 spec:
   inbound:
   - name: notification
-    port: 9096
+    port: 9094
     type: REST
     visibility: Project
     context: /

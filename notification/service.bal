@@ -1,12 +1,13 @@
 import ballerina/http;
+import ballerina/log;
 
 # A service representing a network-accessible API
-# bound to port `9090`.
+# bound to port `9094`.
 @display {
     label: "notification",
     id: "notification-d90d2fa6-66f6-4ce1-93fb-c7ae106da21b"
 }
-service / on new http:Listener(9090) {
+service / on new http:Listener(9094) {
     @display {
         label: "user",
         id: "user-e6486cc7-fdae-465d-95f9-3ca24e566608"
@@ -23,15 +24,10 @@ service / on new http:Listener(9090) {
         self.userClient = check new ("");
         self.orderClient = check new ("");
     }
-
-    # A resource for generating greetings
-    # + name - the input string name
-    # + return - string name with hello message or error
-    resource function get greeting(string name) returns string|error {
-        // Send a response back to the caller.
-        if name is "" {
-            return error("name should not be empty!");
-        }
-        return "Hello, " + name;
+    resource function post notify(string message) returns string|error {
+        log:printInfo(string `getCartItems invoked`);
+        http:Response _ = check self.orderClient->/placeOrder.post(userId = "1", itemId = "1", quantity = 1, message = "");
+        http:Response _ = check self.userClient->/getUser(userId = "1");
+        return "success";
     }
 }

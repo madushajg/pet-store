@@ -1,3 +1,4 @@
+import ballerina/log;
 import ballerina/http;
 
 # A service representing a network-accessible API
@@ -8,14 +9,19 @@ import ballerina/http;
 }
 service / on new http:Listener(9090) {
 
-    # A resource for generating greetings
-    # + name - the input string name
-    # + return - string name with hello message or error
-    resource function get greeting(string name) returns string|error {
-        // Send a response back to the caller.
-        if name is "" {
-            return error("name should not be empty!");
-        }
-        return "Hello, " + name;
+    @display {
+        label: "Inventory",
+        id: "Inventory-4cbc7a29-232e-4276-af5f-4cc47fd8aa77"
+    }
+    http:Client inventoryClient = check new ("");
+
+    function init() returns error? {
+        self.inventoryClient = check new ("");
+    }
+
+    resource function get getProducts() returns string[]|error {
+        log:printInfo("getProducts");
+        string[] items = check self.inventoryClient->/allItems;
+        return items;
     }
 }
