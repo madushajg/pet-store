@@ -12,24 +12,24 @@ service / on new http:Listener(9091) {
         label: "notification",
         id: "notification-d90d2fa6-66f6-4ce1-93fb-c7ae106da21b"
     }
-    http:Client notificationClient = check new ("");
+    http:Client notificationClient;
 
     @display {
         label: "user",
         id: "user-e6486cc7-fdae-465d-95f9-3ca24e566608"
     }
-    http:Client userClient = check new ("");
+    http:Client userClient;
 
     @display {
         label: "product",
         id: "product-f3b70fe8-8a95-4664-b908-416ee136cd20"
     }
-    http:Client productClient = check new ("");
+    http:Client productClient;
 
     function init() returns error? {
-        self.notificationClient = check new ("");
-        self.userClient = check new ("");
-        self.productClient = check new ("");
+        self.notificationClient = check new ("http://order-management-2330531075:9093");
+        self.userClient = check new ("http://order-management-2330531075:9093");
+        self.productClient = check new ("http://order-management-2330531075:9093");
     }
     resource function post placeOrder(string userId, string itemId, int quantity) returns json|error {
         log:printInfo(string `placeOrder invoked with : ${userId}, ${itemId}, ${quantity}`);

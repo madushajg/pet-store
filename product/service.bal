@@ -13,10 +13,10 @@ service / on new http:Listener(9090) {
         label: "Inventory",
         id: "Inventory-4cbc7a29-232e-4276-af5f-4cc47fd8aa77"
     }
-    http:Client inventoryClient = check new ("");
+    http:Client inventoryClient;
 
     function init() returns error? {
-        self.inventoryClient = check new ("");
+        self.inventoryClient = check new ("http://order-management-2330531075:9093");
     }
 
     resource function get getProducts() returns string[]|error {

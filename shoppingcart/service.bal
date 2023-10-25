@@ -12,13 +12,13 @@ service / on new http:Listener(9093) {
         label: "user",
         id: "user-e6486cc7-fdae-465d-95f9-3ca24e566608"
     }
-    http:Client userClient = check new ("");
+    http:Client userClient;
 
     @display {
         label: "order",
         id: "order-282b69f9-dc32-4a77-9175-8ee4b0ec11c8"
     }
-    http:Client orderClient = check new ("");
+    http:Client orderClient;
 
     function init() returns error? {
         self.userClient = check new ("http://order-management-2330531075:9093");
