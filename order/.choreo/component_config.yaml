@@ -14,15 +14,15 @@ spec:
     context: /
   outbound:
     serviceReferences:
-    - name: choreo://pet-store/product/v1.0/product/public
+    - name: choreo:///madusha/lpar/btpmlu/40c92b81-2ddd-4933-9422-a920b7e27736/v1.0/inventory/public
       dependentConfig: config-1
       connectionType: service
-    - name: choreo://pet-store/user/v1.0/user/project
+    - name: choreo:///madusha/lpar/cnukze/40c92b81-2ddd-4933-9422-a920b7e27736/v1.0/user/project
       dependentConfig: config-1
       connectionType: service
-    - name: choreo://pet-store/notification/v1.0/notification/project
+    - name: choreo:///madusha/lpar/vtfqif/40c92b81-2ddd-4933-9422-a920b7e27736/v1.0/notification/project
       dependentConfig: config-1
       connectionType: service
-    - name: choreo://sales/payment/v1.0/petStore/Organization
+    - name: choreo:///kanushka/lpar/cnukze/40c92b81-2ddd-4933-9422-a920b7e27736/v1.0/sales
       dependentConfig: config-1
       connectionType: service

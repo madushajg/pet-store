@@ -14,7 +14,7 @@ spec:
     context: /
   outbound:
     serviceReferences:
-    - name: choreo://pet-store/Inventory/v1.0/inventory/public
+    - name: choreo:///madusha/lpar/auvzlk/40c92b81-2ddd-4933-9422-a920b7e27736/v1.0/inventory/public
       dependentConfig: config-1
       connectionType: service
     - name: product-db
