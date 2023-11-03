@@ -1,0 +1,14 @@
+apiVersion: core.choreo.dev/v1alpha1
+kind: ComponentConfig
+metadata:
+  name: review
+  projectName: pet-store
+  annotations:
+    componentType: service
+spec:
+  inbound:
+    - name: review
+      port: 9494
+      type: REST
+      context: .
+      schemaFilePath: openapi.yaml
