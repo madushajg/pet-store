@@ -1,0 +1,10 @@
+version: 0.1
+
+endpoints:
+- name: review
+  port: 9494
+  type: REST
+  networkVisibility: Organization
+  context: /
+  schemaFilePath: openapi.yaml
+  
