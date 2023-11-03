@@ -12,3 +12,4 @@ spec:
       type: REST
       context: .
       schemaFilePath: openapi.yaml
+      visibility: Organization
